@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.finora.app.auth.entity.User;
 import org.finora.app.auth.repository.UserRepository;
 import org.finora.app.auth.service.JwtService;
-import org.springframework.lang.NonNull;
+import lombok.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;

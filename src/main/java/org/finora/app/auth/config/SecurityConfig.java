@@ -38,7 +38,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/users/**", "/h2-console/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/users/**", "/h2-console/**", "/v3/api-docs/**",
+                                "/swagger-ui/**", "/swagger-ui.html")
+                        .permitAll()
+                        .requestMatchers("/api/test/super-admin/**").hasRole("SUPER_ADMIN")
+                        .requestMatchers("/api/test/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/test/employee/**").hasRole("EMPLOYEE")
+                        .requestMatchers("/api/test/customer/**").hasRole("USER")
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)); // For H2

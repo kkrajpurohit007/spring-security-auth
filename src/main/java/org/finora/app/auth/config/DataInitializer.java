@@ -25,6 +25,8 @@ public class DataInitializer implements CommandLineRunner {
             createAndSaveUser("admin@finora.org", "admin123", "Admin", "User", Role.ADMIN);
             createAndSaveUser("employee@finora.org", "employee123", "Employee", "User", Role.EMPLOYEE);
             createAndSaveUser("user@finora.org", "user123", "User", "User", Role.USER);
+            // Seed a user compatible with Postman Login request
+            createAndSaveUser("testuser@finora.org", "password123", "Test", "User", Role.USER);
             log.info("Data seeding completed.");
         }
     }
